@@ -26,7 +26,7 @@ func TestCalcTokens(t *testing.T) {
 }
 
 func TestFilterRepeatedPunctuation(t *testing.T) {
-	input := `嗯？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！晚安，宝宝~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~， 乖~，mua~！[么么哒]`
+	input := `[害羞][害羞][害羞][害羞][害羞][害羞][害羞](害羞)![害羞](害羞)![害羞](害羞)![害羞](害羞)!嗯？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！？！晚安，宝宝~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~！~， 乖~，mua~！[么么哒]`
 	// fmt.Println(strings.Index(input, `~！`), strings.Index(input, `~`))
 	fmt.Println(strutils.ReplaceRepeatingSubstrings(input, 3)) // Output: Hello! This. is. an example sentence.
 }

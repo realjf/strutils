@@ -165,6 +165,11 @@ func StringToSlice(s string) []rune {
 // @param text string
 // @param repeat int
 func ReplaceRepeatingSubstrings(text string, repeat int) string {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf("ERROR: %s\n", r)
+		}
+	}()
 	repeatingSubstrings := map[string]int{}
 	str := StringToSlice(text)
 
@@ -189,7 +194,8 @@ func ReplaceRepeatingSubstrings(text string, repeat int) string {
 		if c <= repeat {
 			continue
 		}
-		re := regexp.MustCompile(fmt.Sprintf(`(%s)+`, r))
+		rs := regexp.QuoteMeta(r)
+		re := regexp.MustCompile(fmt.Sprintf(`(%s)+`, rs))
 		text = re.ReplaceAllString(text, `$1`)
 	}
 
